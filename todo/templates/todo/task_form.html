@@ -1,0 +1,24 @@
+{% extends "todo/base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h1 class="card-title text-center">{% if form.instance.pk %}Edit{% else %}Create{% endif %} Task</h1>
+                    <form method="POST" class="mt-4">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary btn-block">
+                                {% if form.instance.pk %}Update{% else %}Create{% endif %}
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
